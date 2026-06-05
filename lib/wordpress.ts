@@ -126,20 +126,21 @@ export const getMockProjects = (): Project[] => [
       rendered: `<p>A Flask + Claude API tool that ingests a resume PDF and job description, then produces a laser-targeted, ATS-optimized LaTeX resume ready to compile on Overleaf — preserving factual accuracy while rewriting impact, metrics, and keywords to match the role.</p>`,
     },
     acf: {
+      github_url: 'https://github.com/achyutniroula/ResOptimum',
       technologies: 'Python · Flask · Claude API · pdfplumber · LaTeX',
       language: 'Python',
     },
   },
   {
     id: 9,
-    title: { rendered: 'LearnOne — AI-Powered Personal Educator' },
+    title: { rendered: 'LEON — AI-Powered Learning Platform' },
     content: {
-      rendered: `<p>A Jarvis-style AI educator with persistent learning sessions, Claude API-powered curriculum generation, spaced repetition (SM-2), code execution via Judge0, KaTeX math rendering, Mermaid diagram generation, and a pgvector knowledge graph extracted from conversations.</p>`,
+      rendered: `<p>LEON is a voice-first adaptive learning platform that listens, reasons, and responds with a conversational AI tutor. It combines structured curriculum generation, SM-2 spaced repetition reviews, quiz generation, and a knowledge graph to personalize learning with real-time voice interaction.</p>`,
     },
     acf: {
       github_url: 'https://github.com/achyutniroula/LearnOne',
-      technologies: 'Java · Spring Boot · React · TypeScript · PostgreSQL · Redis · Claude API · pgvector',
-      language: 'Java',
+      technologies: 'Python 3.14 · FastAPI · SQLAlchemy · Groq llama-3.3-70b · Groq whisper-large-v3-turbo · PostgreSQL (Supabase) · Redis (Upstash) · React 18 · TypeScript · Vite · Framer Motion · JWT · bcrypt · Web SpeechSynthesis',
+      language: 'Full Stack',
     },
   },
   {

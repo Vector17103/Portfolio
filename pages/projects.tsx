@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import type { MouseEvent } from 'react';
 import Layout from '../components/Layout';
 import { FaGithub, FaExternalLinkAlt, FaBrain, FaChartBar, FaComments, FaBriefcase, FaDownload, FaRobot, FaSearch, FaCalendarAlt, FaGraduationCap, FaMagic } from 'react-icons/fa';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
@@ -405,6 +406,17 @@ interface ProjectsProps {
   personalInfo: PersonalInfo;
 }
 
+function updatePointerPosition(event: MouseEvent<HTMLElement>) {
+  const target = event.currentTarget as HTMLElement;
+  const rect = target.getBoundingClientRect();
+  const x = ((event.clientX - rect.left) / rect.width) * 100;
+  const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+  target.style.setProperty('--pointer-x', `${x}%`);
+  target.style.setProperty('--pointer-y', `${y}%`);
+}
+
+
 export default function Projects({ projects, personalInfo }: ProjectsProps) {
   return (
     <>
@@ -429,7 +441,10 @@ export default function Projects({ projects, personalInfo }: ProjectsProps) {
                   className={styles.cardWrapper}
                   style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
                 >
-                  <div className={styles.projectCard}>
+                  <div
+                    className={styles.projectCard}
+                    onMouseMove={updatePointerPosition}
+                  >
                     <div className={styles.projectThumbnail}>
                       <ProjectThumbnail projectId={project.id} />
                       <div className={styles.thumbnailOverlay} />
