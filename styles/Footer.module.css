@@ -1,12 +1,13 @@
 .footer {
-  background: var(--color-surface);
-  color: var(--color-primary);
+  background: transparent;
+  color: var(--color-secondary);
   padding: 3rem 0 1rem;
   margin-top: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -21,7 +22,7 @@
 .section h3 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-weight: 600;
 }
 
@@ -35,13 +36,13 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   transition: all 0.3s ease;
   font-size: 0.95rem;
 }
 
 .contactItem:hover {
-  color: var(--color-accent);
+  color: var(--color-secondary);
   transform: translateX(5px);
 }
 
@@ -60,25 +61,22 @@
   justify-content: center;
   width: 45px;
   height: 45px;
-  border: 2px solid var(--color-secondary);
+  border: 2px solid rgba(255, 255, 255, 0.16);
   border-radius: 50%;
-  color: var(--color-primary);
-  font-size: 1.5rem;
+  color: var(--color-secondary);
+  font-size: 1.4rem;
   transition: all 0.3s ease;
 }
 
 .socialIcon:hover {
-  background: var(--color-background);
-  color: var(--color-primary);
-  border-color: var(--color-background);
-  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
 }
 
 .bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-secondary);
-  color: var(--color-secondary);
+  color: var(--color-muted);
   font-size: 0.9rem;
 }
 

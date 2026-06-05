@@ -21,7 +21,7 @@ const Footer = ({ personalInfo }: FooterProps) => {
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer id="site-footer" className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.section}>

@@ -6,7 +6,7 @@
 
 .subtitle {
   text-align: center;
-  color: var(--color-accent);
+  color: var(--color-muted);
   font-size: 1.1rem;
   max-width: 700px;
   margin: -2rem auto 3rem;
@@ -40,6 +40,23 @@
   flex-direction: column;
   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.35);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+}
+
+.projectCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(180, 110, 255, 0.28), rgba(150, 78, 255, 0.16) 14%, rgba(105, 46, 226, 0.08) 30%, transparent 48%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: screen;
+}
+
+.projectCard:hover::before {
+  opacity: 1;
 }
 
 .cardWrapper:hover .projectCard {
@@ -110,7 +127,7 @@
 }
 
 .projectDescription {
-  color: var(--color-accent);
+  color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
   flex: 1;

@@ -1,4 +1,4 @@
-# Shoaib's Portfolio Website
+# Achyut's Portfolio Website
 
 A minimalistic, sophisticated personal portfolio website with WordPress integration for easy content management. Built with Next.js and deployed on Firebase Hosting.
 
@@ -364,4 +364,4 @@ For questions or issues:
 
 ---
 
-Built with ❤️ by Shoaib
+Built with ❤️ by Achyut
