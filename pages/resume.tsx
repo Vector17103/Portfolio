@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import type { MouseEvent } from 'react';
 import Layout from '../components/Layout';
 import { FaDownload, FaGraduationCap, FaBriefcase, FaCode, FaWrench } from 'react-icons/fa';
 import { getMockPersonalInfo, PersonalInfo } from '../lib/wordpress';
@@ -11,43 +10,34 @@ interface ResumeProps {
 }
 
 export default function Resume({ personalInfo }: ResumeProps) {
-  const handleTilePointerMove = (event: MouseEvent<HTMLElement>) => {
-    const target = event.currentTarget as HTMLElement;
-    const rect = target.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-    target.style.setProperty('--pointer-x', `${x}%`);
-    target.style.setProperty('--pointer-y', `${y}%`);
-  };
-
   return (
     <>
       <Head>
-        <title>Resume - Achyut</title>
-        <meta name="description" content="Resume and CV of Achyut" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <title>Resume — Achyut Niroula</title>
+        <meta name="description" content="Resume and CV of Achyut Niroula" />
       </Head>
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.resumeSection}>
           <div className="container">
             <div className={styles.header}>
-              <h1 className="section-title">Resume</h1>
+              <span className="eyebrow">Resume</span>
               <a href={personalInfo.resume_url} download className={styles.downloadBtn}>
                 <FaDownload /> Download PDF
               </a>
             </div>
+            <h1 className={styles.title}>Resume</h1>
+            <hr className="rule" />
 
             {/* Experience Section */}
-            <div className={styles.section} onMouseMove={handleTilePointerMove}>
+            <div className={styles.section}>
               <div className={styles.sectionHeader}>
                 <FaBriefcase className={styles.icon} />
                 <h2>Experience</h2>
               </div>
               <div className={styles.content}>
                 <div className={styles.item}>
-                  <h3>Co-Founder, Staff Software Engineer</h3>
+                  <h3>Co-Founder, Founding Software Engineer</h3>
                   <p className={styles.institution}>Apatheia — North Bay, ON</p>
                   <p className={styles.date}>Jun. 2025 – Present</p>
                   <ul className={styles.details}>
@@ -77,7 +67,7 @@ export default function Resume({ personalInfo }: ResumeProps) {
             </div>
 
             {/* Projects Section */}
-            <div className={styles.section} onMouseMove={handleTilePointerMove}>
+            <div className={styles.section}>
               <div className={styles.sectionHeader}>
                 <FaWrench className={styles.icon} />
                 <h2>Projects</h2>
@@ -111,7 +101,7 @@ export default function Resume({ personalInfo }: ResumeProps) {
             </div>
 
             {/* Education Section */}
-            <div className={styles.section} onMouseMove={handleTilePointerMove}>
+            <div className={styles.section}>
               <div className={styles.sectionHeader}>
                 <FaGraduationCap className={styles.icon} />
                 <h2>Education</h2>
@@ -130,44 +120,44 @@ export default function Resume({ personalInfo }: ResumeProps) {
             </div>
 
             {/* Technical Skills Section */}
-            <div className={styles.section} onMouseMove={handleTilePointerMove}>
+            <div className={styles.section}>
               <div className={styles.sectionHeader}>
                 <FaCode className={styles.icon} />
                 <h2>Technical Skills</h2>
               </div>
               <div className={styles.content}>
                 <div className={styles.skillsGrid}>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>Languages</h3>
                     <div className={styles.skillTags}>
                       <span>Java</span><span>TypeScript</span><span>Python</span><span>JavaScript</span><span>SQL</span><span>C++</span><span>HTML5/CSS3</span>
                     </div>
                   </div>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>Frameworks &amp; APIs</h3>
                     <div className={styles.skillTags}>
                       <span>FastAPI</span><span>React</span><span>Node.js</span><span>Flask</span><span>Nginx</span><span>RESTful APIs</span><span>microservices</span>
                     </div>
                   </div>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>AI &amp; LLM</h3>
                     <div className={styles.skillTags}>
                       <span>Claude API</span><span>Gemini</span><span>Groq</span><span>OpenRouter</span><span>agentic workflows</span><span>LLM pipelines</span><span>prompt engineering</span>
                     </div>
                   </div>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>Cloud &amp; DevOps</h3>
                     <div className={styles.skillTags}>
                       <span>AWS (EC2, S3, SQS, DynamoDB)</span><span>Docker</span><span>Linux</span><span>Git</span><span>Google Cloud Run</span><span>Firebase</span>
                     </div>
                   </div>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>Databases</h3>
                     <div className={styles.skillTags}>
                       <span>PostgreSQL</span><span>Redis</span><span>SQLite</span><span>Firebase</span>
                     </div>
                   </div>
-                  <div className={styles.skillCategory} onMouseMove={handleTilePointerMove}>
+                  <div className={styles.skillCategory}>
                     <h3>Testing</h3>
                     <div className={styles.skillTags}>
                       <span>pytest</span><span>JUnit</span><span>Playwright</span><span>TDD</span>

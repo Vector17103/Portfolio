@@ -1,43 +1,56 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 import styles from '../styles/Header.module.css';
+
+const NAV_LINKS = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/insurance', label: 'Insurance' },
+  { href: '/resume', label: 'Resume' },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((open) => !open);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
-          Achyut
-        </Link>
-
-        <button 
-          className={styles.hamburger}
+        <button
+          className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
-          <span className={isMenuOpen ? styles.open : ''}></span>
-          <span className={isMenuOpen ? styles.open : ''}></span>
-          <span className={isMenuOpen ? styles.open : ''}></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
-          <Link href="/" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </Link>
-          <Link href="/projects" onClick={() => setIsMenuOpen(false)}>
-            Projects
-          </Link>
-          <Link href="/resume" onClick={() => setIsMenuOpen(false)}>
-            Resume
-          </Link>
-        </nav>
+        <Link href="/" className={styles.wordmark} onClick={closeMenu}>
+          Achyut Niroula
+        </Link>
+
+        <ThemeToggle />
       </div>
+
+      <nav className={`${styles.overlay} ${isMenuOpen ? styles.overlayOpen : ''}`}>
+        {NAV_LINKS.map((link) => (
+          <Link key={link.href} href={link.href} onClick={closeMenu} className={styles.overlayLink}>
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 };

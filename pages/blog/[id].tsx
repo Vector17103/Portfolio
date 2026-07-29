@@ -16,7 +16,6 @@ export default function BlogPostPage({ post, personalInfo }: BlogPostPageProps) 
       <Head>
         <title>{post.title.rendered} - Achyut</title>
         <meta name="description" content={post.excerpt.rendered.replace(/<[^>]*>/g, '')} />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <Layout personalInfo={personalInfo}>
