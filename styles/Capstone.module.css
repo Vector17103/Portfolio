@@ -1,9 +1,8 @@
 .page {
   min-height: 100vh;
   padding: 3.5rem 0 5rem;
-  color: var(--color-primary);
-  background-color: #050506;
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(7, 9, 16, 0.98));
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 .hero {
@@ -37,7 +36,7 @@
   font-size: clamp(3.2rem, 5vw, 4.8rem);
   line-height: 0.96;
   margin: 0;
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .heroText {
@@ -72,11 +71,8 @@
   position: relative;
   width: 100%;
   max-width: 620px;
-  border-radius: 32px;
   overflow: hidden;
-  border: 1px solid rgba(138, 87, 235, 0.24);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(7, 9, 16, 0.95));
-  box-shadow: 0 30px 80px rgba(103, 58, 183, 0.22);
+  border: 1px solid var(--color-border);
 }
 
 .previewCard::before {
@@ -84,7 +80,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(7, 9, 16, 0.92) 0%, rgba(7, 9, 16, 0.2) 20%, transparent 40%);
+  background: linear-gradient(90deg, rgba(26, 26, 26, 0.55) 0%, rgba(26, 26, 26, 0.1) 20%, transparent 40%);
   z-index: 2;
 }
 
@@ -100,10 +96,9 @@
   left: 1.25rem;
   bottom: 1.25rem;
   padding: 0.85rem 1rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-secondary);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -129,7 +124,7 @@
 
 .heroSummary h2 {
   margin: 0;
-  color: var(--color-secondary);
+  color: var(--color-text);
   font-size: clamp(1rem, 1.6vw, 1.1rem);
   letter-spacing: 0.16em;
   font-weight: 700;
@@ -161,29 +156,29 @@
 .content h1 {
   font-size: clamp(2rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-text);
   margin: 2.5rem 0 1rem;
   padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--color-border);
   letter-spacing: 0.02em;
 }
 
 .content h2 {
   font-size: clamp(1.4rem, 2.3vw, 1.85rem);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-text);
   margin: 2rem 0 0.85rem;
 }
 
 .content h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-secondary);
+  color: var(--color-text);
   margin: 1.5rem 0 0.5rem;
 }
 
 .content strong {
-  color: var(--color-secondary);
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -211,13 +206,13 @@
 .content th,
 .content td {
   padding: 0.75rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
   text-align: left;
 }
 
 .content th {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-secondary);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
   font-weight: 700;
 }
 

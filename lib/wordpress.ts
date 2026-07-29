@@ -255,6 +255,6 @@ export const getMockPersonalInfo = (): PersonalInfo => ({
   github: 'https://github.com/achyutniroula',
   instagram: 'https://instagram.com/achniroula',
   resume_url: '/resume.pdf',
-  bio: 'Computer Science student at Nipissing University',
+  bio: 'Computer Science graduate from Nipissing University',
   profile_image: '/profile.jpg',
 });
