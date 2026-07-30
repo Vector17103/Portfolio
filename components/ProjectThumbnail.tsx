@@ -1,4 +1,4 @@
-import { INK, MUTED, PANEL, PANEL_BORDER, BG } from '../lib/thumbnailPalette';
+import { INK, MUTED, PANEL, PANEL_BORDER, BG, HIGHLIGHT } from '../lib/thumbnailPalette';
 
 interface ProjectThumbnailProps {
   projectId: number;
@@ -22,10 +22,10 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
         <animate attributeName="opacity" values="0.35;0.1;0.35" dur="2.8s" repeatCount="indefinite" />
       </rect>
       {/* Center: AI indicator */}
-      <circle cx="200" cy="100" r="18" fill="none" stroke={INK} strokeWidth="1" opacity="0.4">
-        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2s" repeatCount="indefinite" />
+      <circle cx="200" cy="100" r="18" fill="none" stroke={HIGHLIGHT} strokeWidth="1.2" opacity="0.75">
+        <animate attributeName="opacity" values="0.55;0.95;0.55" dur="2s" repeatCount="indefinite" />
       </circle>
-      <text x="200" y="104" textAnchor="middle" fontSize="9" fill={MUTED} opacity="0.7" fontFamily="monospace">AI</text>
+      <text x="200" y="104" textAnchor="middle" fontSize="9" fill={HIGHLIGHT} opacity="0.9" fontFamily="monospace">AI</text>
       <line x1="158" y1="100" x2="180" y2="100" stroke={INK} strokeWidth="0.8" opacity="0.2" />
       <line x1="220" y1="100" x2="242" y2="100" stroke={INK} strokeWidth="0.8" opacity="0.2" />
       {/* Right: LaTeX output */}
@@ -72,7 +72,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
       {[0,1,2,3,4].map(i => (
         <g key={i} opacity="0">
           <circle cx="224" cy={50+i*28} r="5" fill="none" stroke={INK} strokeWidth="0.8" opacity="0.4" />
-          <polyline points={`220,${50+i*28} 223,${54+i*28} 229,${46+i*28}`} fill="none" stroke={INK} strokeWidth="1.2" strokeLinecap="round" opacity="0.6">
+          <polyline points={`220,${50+i*28} 223,${54+i*28} 229,${46+i*28}`} fill="none" stroke={HIGHLIGHT} strokeWidth="1.4" strokeLinecap="round" opacity="0.85">
             <animate attributeName="opacity" values="0;0.6;0.6" dur={`${4+i}s`} repeatCount="indefinite" begin={`${i*0.5+0.5}s`} />
           </polyline>
           <rect x="236" y={46+i*28} width={90+(i%3)*18} height="5" rx="2" fill={MUTED} opacity="0.28" />
@@ -102,7 +102,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
         </circle>
       ))}
       {[65, 135].map((y, i) => (
-        <circle key={i} cx="320" cy={y} r="9" fill={PANEL} stroke={INK} strokeWidth="1.2" opacity="0.7">
+        <circle key={i} cx="320" cy={y} r="9" fill={PANEL} stroke={HIGHLIGHT} strokeWidth="1.4" opacity="0.85">
           <animate attributeName="opacity" values="0.7;1;0.7" dur={`${1.6 + i * 0.5}s`} repeatCount="indefinite" begin={`${i * 0.4}s`} />
         </circle>
       ))}
@@ -134,7 +134,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
           <rect x={338+(i%3)*18} y={48+i*22} width="28" height="5" rx="2" fill={MUTED} opacity="0.14" />
         </g>
       ))}
-      <rect x="285" y="42" width="100" height="1" fill={INK} opacity="0.3">
+      <rect x="285" y="42" width="100" height="1.5" fill={HIGHLIGHT} opacity="0.8">
         <animate attributeName="y" values="42;148;42" dur="3s" repeatCount="indefinite" />
       </rect>
     </svg>
@@ -163,8 +163,8 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
       </g>
       <rect x="268" y="145" width="92" height="30" rx="10" fill="none" stroke={INK} strokeWidth="0.6" opacity="0.25" />
       {[298,314,330].map((cx, i) => (
-        <circle key={i} cx={cx} cy="160" r="4" fill={INK} opacity="0.3">
-          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1s" repeatCount="indefinite" begin={`${i*0.22}s`} />
+        <circle key={i} cx={cx} cy="160" r="4" fill={HIGHLIGHT} opacity="0.55">
+          <animate attributeName="opacity" values="0.4;0.9;0.4" dur="1s" repeatCount="indefinite" begin={`${i*0.22}s`} />
         </circle>
       ))}
       {[0,1,2].map(i => (
@@ -191,7 +191,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
       </rect>
       <rect x="228" y="38" width="135" height="126" rx="4" fill={PANEL} stroke={PANEL_BORDER} strokeWidth="1" />
       <text x="295" y="63" textAnchor="middle" fontSize="9" fill={MUTED} opacity="0.6" fontFamily="monospace">MATCH SCORE</text>
-      <text x="295" y="100" textAnchor="middle" fontSize="30" fill={INK} fontFamily="monospace" fontWeight="300">
+      <text x="295" y="100" textAnchor="middle" fontSize="30" fill={HIGHLIGHT} fontFamily="monospace" fontWeight="300">
         <animate attributeName="opacity" values="0;0.65;0.65;0" dur="3s" repeatCount="indefinite" />
         87%
       </text>
@@ -219,7 +219,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
       ]).map((row, i) => (
         <g key={i}>
           <rect x="46" y={56+i*30} width="248" height="6" rx="3" fill={PANEL_BORDER} />
-          <rect x="46" y={56+i*30} width="0" height="6" rx="3" fill={INK} opacity="0.4">
+          <rect x="46" y={56+i*30} width="0" height="6" rx="3" fill={i === 0 ? HIGHLIGHT : INK} opacity={i === 0 ? 0.75 : 0.4}>
             <animate attributeName="width" values={`0;${248*row.fill};${248*row.fill}`} dur={row.dur} repeatCount="indefinite" begin={row.d} />
           </rect>
           <text x="46" y={71+i*30} fontSize="7.5" fill={MUTED} opacity="0.55" fontFamily="monospace">{row.label}</text>
@@ -235,10 +235,10 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
       <rect x="30" y="75" width="110" height="50" rx="6" fill={PANEL} stroke={PANEL_BORDER} strokeWidth="1" />
       <text x="85" y="96" textAnchor="middle" fontSize="8" fill={MUTED} opacity="0.7" fontFamily="monospace">PROMPT</text>
       <text x="85" y="110" textAnchor="middle" fontSize="7" fill={MUTED} opacity="0.45" fontFamily="monospace">JSON input</text>
-      <circle cx="220" cy="100" r="20" fill="none" stroke={INK} strokeWidth="1" opacity="0.45">
-        <animate attributeName="opacity" values="0.45;0.8;0.45" dur="2s" repeatCount="indefinite" />
+      <circle cx="220" cy="100" r="20" fill="none" stroke={HIGHLIGHT} strokeWidth="1.2" opacity="0.75">
+        <animate attributeName="opacity" values="0.55;0.95;0.55" dur="2s" repeatCount="indefinite" />
       </circle>
-      <text x="220" y="104" textAnchor="middle" fontSize="8" fill={MUTED} opacity="0.7" fontFamily="monospace">AI</text>
+      <text x="220" y="104" textAnchor="middle" fontSize="8" fill={HIGHLIGHT} opacity="0.9" fontFamily="monospace">AI</text>
       {(['GPT-4o','Claude','Llama'] as string[]).map((name, i) => (
         <g key={i}>
           <rect x="300" y={38+i*52} width="72" height="26" rx="5" fill={PANEL} stroke={PANEL_BORDER} strokeWidth="1" />
@@ -277,7 +277,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
           <animate attributeName="opacity" values="0;1;1" dur={`${4+i*0.8}s`} repeatCount="indefinite" begin={`${i*0.4}s`} />
         </g>
       ))}
-      <rect x="42" y="50" width="320" height="1" fill={INK} opacity="0.3">
+      <rect x="42" y="50" width="320" height="1.5" fill={HIGHLIGHT} opacity="0.8">
         <animate attributeName="y" values="50;172;50" dur="3.2s" repeatCount="indefinite" />
       </rect>
     </svg>
@@ -312,7 +312,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
         })
       )}
       <g opacity="0">
-        <polyline points="285,88 298,106 330,74" fill="none" stroke={INK} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.6" />
+        <polyline points="285,88 298,106 330,74" fill="none" stroke={HIGHLIGHT} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
         <animate attributeName="opacity" values="0;0;1;1;0" dur="4s" repeatCount="indefinite" begin="1s" />
       </g>
     </svg>

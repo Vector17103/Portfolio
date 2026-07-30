@@ -15,16 +15,23 @@
   margin-top: 1.25rem;
 }
 
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.5rem;
+  margin-top: 3rem;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 2rem;
 }
 
 .card {
-  border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--color-border);
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -44,6 +51,11 @@
   display: block;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .thumbnail svg {
+  transform: scale(1.035);
 }
 
 .content {
@@ -62,11 +74,18 @@
 .card p {
   color: var(--color-muted);
   line-height: 1.65;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .statsRow {
+    gap: 2rem;
   }
 }

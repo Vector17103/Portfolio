@@ -6,9 +6,9 @@ import Layout from '../components/Layout';
 import ProjectThumbnail from '../components/ProjectThumbnail';
 import StatCounter from '../components/StatCounter';
 import ContactForm from '../components/ContactForm';
-import { useReveal } from '../lib/useReveal';
+import Reveal from '../components/Reveal';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
-import { insuranceStats } from '../lib/insurance';
+import { insuranceStats } from '../lib/insuranceServices';
 import styles from '../styles/Home.module.css';
 
 // Homepage highlights — edit this list to change which projects appear here.
@@ -31,20 +31,6 @@ function formatTechnologies(technologies?: string): string {
   if (!technologies) return 'Software Development';
   const items = technologies.split('·').map((t) => t.trim()).filter(Boolean);
   return items.slice(0, MAX_HOME_TECHNOLOGIES).join(' · ');
-}
-
-function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  const { ref, visible } = useReveal<HTMLDivElement>();
-  return (
-    <div
-      ref={ref}
-      data-reveal
-      className={visible ? `${className ?? ''} is-visible` : className}
-      style={{ '--reveal-delay': `${delay}s` } as React.CSSProperties}
-    >
-      {children}
-    </div>
-  );
 }
 
 export default function Home({ projects, personalInfo }: HomeProps) {
@@ -148,7 +134,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
         <section className={styles.section} id="contact">
           <div className="container">
             <Reveal>
-              <span className={styles.eyebrow}>Get in touch</span>
+              <span className={`${styles.eyebrow} ${styles.eyebrowStrong}`}>Get in touch</span>
               <hr className="rule" />
             </Reveal>
 

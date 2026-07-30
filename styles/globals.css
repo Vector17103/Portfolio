@@ -5,6 +5,7 @@
   --color-muted: #6E6658;
   --color-border: #DDD3BE;
   --color-accent: #A9A7A0;
+  --color-highlight: #D97757;
 }
 
 :root[data-theme='dark'] {
