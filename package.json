@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
+    "generate:skyline": "node scripts/generate-skyline.mjs",
     "deploy": "next build && firebase deploy"
   },
   "dependencies": {
@@ -15,7 +16,8 @@
     "next": "^16.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

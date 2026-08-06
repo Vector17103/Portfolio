@@ -37,3 +37,6 @@ next-env.d.ts
 .firebase/
 .firebaserc
 firebase-debug.log
+
+# Local planning docs (not for the repo)
+claude-code-thumbnails-accounts-norlease-prompt.md

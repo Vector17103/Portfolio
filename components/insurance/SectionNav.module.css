@@ -1,0 +1,94 @@
+.nav {
+  position: sticky;
+  top: 88px;
+  z-index: 900;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  display: inline-block;
+  padding: 0.9rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+.linkActive {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+.backToTop {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 900;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.backToTop:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.backToTopVisible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backToTop {
+    transition: opacity 0.01s linear;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .navInner {
+    padding: 0 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .link {
+    font-size: 0.66rem;
+    padding: 0.75rem 0;
+  }
+
+  .backToTop {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+}

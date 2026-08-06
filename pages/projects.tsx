@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import ProjectThumbnail from '../components/ProjectThumbnail';
+import NorleaseCard from '../components/NorleaseCard';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
 import styles from '../styles/Projects.module.css';
@@ -28,6 +29,8 @@ export default function Projects({ projects, personalInfo }: ProjectsProps) {
               A collection of projects showcasing my work in cloud-native systems, multimodal AI, and full-stack web development.
             </p>
             <hr className="rule" />
+
+            <NorleaseCard />
 
             <div className={styles.projectsGrid}>
               {projects.map((project) => (

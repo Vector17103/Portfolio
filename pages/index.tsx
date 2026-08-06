@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import ProjectThumbnail from '../components/ProjectThumbnail';
 import StatCounter from '../components/StatCounter';
 import ContactForm from '../components/ContactForm';
+import NorleaseCard from '../components/NorleaseCard';
 import Reveal from '../components/Reveal';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
 import { insuranceStats } from '../lib/insuranceServices';
@@ -86,6 +87,10 @@ export default function Home({ projects, personalInfo }: HomeProps) {
             <Reveal>
               <span className={styles.eyebrow}>Projects</span>
               <hr className="rule" />
+            </Reveal>
+
+            <Reveal>
+              <NorleaseCard />
             </Reveal>
 
             <div className={styles.projectList}>

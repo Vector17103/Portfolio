@@ -70,23 +70,78 @@
 }
 
 /* 3. Comparison table */
+.tableIntro {
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  max-width: 52rem;
+  margin-bottom: 1.5rem;
+}
+
+.tableCaption {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Every table rendered through this stylesheet (product comparison tables,
+   account tax-treatment tables, contribution tables, the marginal-rate
+   table) is narrow: 2-4 columns, sized to its content, left-aligned to the
+   text column. `width: auto` on a <table> does NOT shrink-to-fit the way it
+   does on a normal block element — a table is sized to its containing
+   block's full width unless given `width: fit-content` explicitly. That was
+   the bug the previous pass missed. The one genuinely wide table on the
+   site (the Equitable fund lineup) lives in its own component with its own
+   full-width treatment; it never uses these classes. */
 .tableWrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
   overflow-x: auto;
   border: 1px solid var(--color-border);
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
+  table-layout: auto;
+  margin-inline-start: 0;
   border-collapse: collapse;
   font-size: 1rem;
 }
 
+/* Opt-in modifiers, added alongside .tableWrap/.table (not replacing them)
+   for the rare wide table that legitimately needs full content width and a
+   horizontal-scroll affordance. Apply both together: <div className={`${styles.tableWrap} ${styles.tableWrapWide}`}>. */
+.tableWrapWide {
+  width: 100%;
+}
+
+.tableWide {
+  width: 100%;
+  min-width: max-content;
+}
+
 .table th,
 .table td {
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 1.75rem;
   text-align: left;
   border-bottom: 1px solid var(--color-border);
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 1.75rem;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 1.75rem;
 }
 
 .table th {
@@ -172,12 +227,28 @@
   color: var(--color-text);
 }
 
+.exampleSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exampleSteps p {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
 .disclaimer {
   margin-top: 1.25rem;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--color-muted);
   font-style: italic;
+}
+
+.disclaimer a {
+  text-decoration: underline;
 }
 
 /* 7. Learn more callout */
@@ -261,6 +332,151 @@
   opacity: 0.6;
 }
 
+/* Numbered step list (How it works) */
+.stepList {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 52rem;
+}
+
+.stepList li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.stepList li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  font-family: var(--font-serif);
+}
+
+/* Cost factors */
+.factorList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 44rem;
+}
+
+.factorList li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  font-size: 1.05rem;
+}
+
+.factorList li::before {
+  content: '$';
+  position: absolute;
+  left: 0;
+  color: var(--color-text);
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+/* FAQs */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 52rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.faqItem {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faqQuestion {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.faqAnswer {
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Watch for */
+.watchList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 52rem;
+}
+
+.watchList li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  font-size: 1.05rem;
+}
+
+.watchList li::before {
+  content: '!';
+  position: absolute;
+  left: 0.15rem;
+  color: var(--color-text);
+  opacity: 0.55;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Advantage note (segregated funds only) */
+.advantageBox {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 52rem;
+}
+
+.advantageBox p {
+  color: var(--color-muted);
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+/* Independent advice note */
+.adviceNote {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 2px solid var(--color-border);
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .sectionBlock {
     margin-top: 3.5rem;
@@ -269,6 +485,25 @@
 
   .table th,
   .table td {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.1rem;
+  }
+
+  .stepList li {
+    padding-left: 2.5rem;
+    font-size: 1.02rem;
+  }
+
+  /* Mobile scroll affordance: fade the right edge to hint more columns exist. */
+  .tableWrap::after {
+    content: '';
+    position: sticky;
+    top: 0;
+    right: 0;
+    float: right;
+    width: 1.5rem;
+    height: 100%;
+    margin-left: -1.5rem;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--color-bg) 90%);
   }
 }

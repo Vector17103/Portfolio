@@ -6,6 +6,18 @@
   --color-border: #DDD3BE;
   --color-accent: #A9A7A0;
   --color-highlight: #D97757;
+  /* Chart palette — distinct from the Norlease spotlight, used only by
+     Recharts/SVG data visualizations across the insurance and accounts pages. */
+  --chart-1: #D97757;
+  --chart-2: #4C6B5C;
+  --chart-3: #B08A3E;
+  --chart-4: #7A5C6E;
+  --chart-grid: #DDD3BE;
+  --chart-axis: #6E6658;
+  /* Norlease spotlight border — theme-aware, neutral. Light mode: a hairline
+     near the ink text color. Dark mode override below adds the glow. */
+  --color-spotlight-border: rgba(26, 26, 26, 0.85);
+  --color-spotlight-shadow: none;
 }
 
 :root[data-theme='dark'] {
@@ -15,6 +27,14 @@
   --color-muted: #9B9B96;
   --color-border: #383838;
   --color-accent: #8C8C87;
+  --chart-1: #E8926A;
+  --chart-2: #7FA491;
+  --chart-3: #D1AD6C;
+  --chart-4: #B08CA0;
+  --chart-grid: #383838;
+  --chart-axis: #9B9B96;
+  --color-spotlight-border: rgba(237, 237, 234, 0.55);
+  --color-spotlight-shadow: 0 0 24px rgba(237, 237, 234, 0.12), 0 0 2px rgba(237, 237, 234, 0.35);
 }
 
 * {
@@ -157,5 +177,9 @@ p {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
