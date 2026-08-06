@@ -162,6 +162,7 @@ export default function TfsaRrspComparator() {
           <CartesianGrid stroke="var(--chart-grid)" strokeDasharray="3 3" vertical={false} />
           <XAxis
             dataKey="year"
+            interval={Math.max(0, Math.ceil(data.length / 6) - 1)}
             tick={{ fill: 'var(--chart-axis)', fontSize: 11 }}
             tickLine={false}
             axisLine={{ stroke: 'var(--chart-grid)' }}

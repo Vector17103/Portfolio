@@ -29,7 +29,10 @@
   margin-top: 1.25rem;
 }
 
-/* Hero diagram — the card icon, scaled up, still scroll-gated via `active`. */
+/* Hero diagram — the card icon, scaled up, still scroll-gated via `active`.
+   width:100%/aspect-ratio already keeps it from overflowing at any width;
+   the problem is text inside the SVG shrinking along with the container.
+   Below 560px the `text` override forces a legible floor. */
 .heroDiagram {
   margin-top: 3rem;
   border: 1px solid var(--color-border);
@@ -41,6 +44,12 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 560px) {
+  .heroDiagram :global(text) {
+    font-size: 13px !important;
+  }
 }
 
 /* Generic vertical rhythm wrapper for each of the numbered sections below the hero. */
@@ -144,6 +153,59 @@
   padding-right: 1.75rem;
 }
 
+/* Tables of 3+ columns (product "at a glance" comparisons, the TFSA
+   contribution table) get cramped once wrapping starts eating the width
+   budget at phone widths. Below 560px, drop the table chrome entirely and
+   render each row as a label/value stack instead — the classic CSS-only
+   responsive-table technique, using data-label on each <td> for the
+   generated heading. True 2-column tables (tax treatment, marginal rates)
+   already read fine wrapped in place and are left alone. */
+@media (max-width: 560px) {
+  .tableStackMobile.table {
+    width: 100%;
+  }
+
+  .tableStackMobile.table thead {
+    display: none;
+  }
+
+  .tableStackMobile.table tr {
+    display: block;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tableStackMobile.table tr:last-child {
+    border-bottom: none;
+  }
+
+  .tableStackMobile.table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.3rem 1.1rem !important;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  .tableStackMobile.table td:first-child {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .tableStackMobile.table td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    max-width: 45%;
+    color: var(--color-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+  }
+}
+
 .table th {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -177,6 +239,16 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* This diagram's viewBox (800x360) means its smallest source labels
+   (fontSize 11-14) shrink to under 5px on a 375px phone. Force a legible
+   floor rather than tuning per-component; some hierarchy between label
+   sizes is lost, but nothing becomes unreadable. */
+@media (max-width: 560px) {
+  .breakdownDiagram :global(text) {
+    font-size: 14px !important;
+  }
 }
 
 /* 5. Who it's for */

@@ -87,18 +87,26 @@
   text-transform: none;
 }
 
+/* Range inputs: the native thumb/track is thin, so give the whole element
+   a 44px-tall tap target (WCAG 2.5.5) via padding, not just a taller thumb. */
 .control input[type='range'] {
+  display: block;
   width: 100%;
+  padding: 14px 0;
+  margin: 0;
   accent-color: var(--chart-1);
+  touch-action: pan-y;
 }
 
 .control select {
   width: 100%;
-  padding: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 0.6rem;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
   color: var(--color-text);
   font-size: 0.9rem;
+  box-sizing: border-box;
 }
 
 .resultRow {
@@ -136,5 +144,24 @@
 
   .controls {
     grid-template-columns: 1fr;
+  }
+
+  /* One legend entry per row — some labels (e.g. the RRSP comparator's) are
+     long enough that two side by side would wrap mid-word. */
+  .legend {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Recharts renders its own SVG <text> nodes with these fixed classnames,
+     outside CSS-module scoping — this is the one shared place every chart's
+     axis/label text passes through, so shrinking it here covers all 10
+     charts instead of touching each chart's tick fontSize individually. */
+  .chartWrap :global(.recharts-text) {
+    font-size: 9.5px;
+  }
+
+  .chartWrap :global(.recharts-cartesian-axis-tick-value) {
+    font-size: 9.5px;
   }
 }

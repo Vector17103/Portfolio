@@ -1,10 +1,10 @@
 export const norlease = {
   name: 'Norlease',
-  tagline: 'Verified rental listings for North Bay, Ontario.',
+  tagline: 'Rental listings, verified before they’re posted.',
   status: 'In development',
   url: 'https://northlease.ca',
   description:
-    'A verified rental-housing platform built for anyone renting in North Bay, Ontario. Every landlord passes a two-step verification, an automated phone check plus a human-reviewed photo ID and selfie, before a listing goes live, so renters can trust what they are looking at from the first search.',
+    'A verified rental-housing platform launching in North Bay, Ontario. Every landlord passes a two-step verification, an automated phone check plus a human-reviewed photo ID and selfie, before a listing goes live, so renters can trust what they are looking at from the first search.',
   differentiators: [
     'Two-step landlord verification: automated phone check + human-reviewed photo ID and selfie',
     'Perceptual-hash duplicate photo detection catches reused or stolen listing photos across listings',

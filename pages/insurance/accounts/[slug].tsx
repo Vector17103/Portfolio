@@ -19,9 +19,10 @@ interface AccountDetailProps {
 }
 
 function Table({ table }: { table: DataTable }) {
+  const stackOnMobile = table.headers.length >= 3;
   return (
     <div className={styles.tableWrap}>
-      <table className={styles.table}>
+      <table className={`${styles.table}${stackOnMobile ? ` ${styles.tableStackMobile}` : ''}`}>
         <thead>
           <tr>
             {table.headers.map((header, i) => (
@@ -33,7 +34,7 @@ function Table({ table }: { table: DataTable }) {
           {table.rows.map((row, i) => (
             <tr key={i}>
               {row.map((cell, j) => (
-                <td key={j}>{cell}</td>
+                <td key={j} data-label={table.headers[j]}>{cell}</td>
               ))}
             </tr>
           ))}

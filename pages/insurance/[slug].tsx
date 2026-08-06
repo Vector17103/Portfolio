@@ -102,7 +102,7 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
                 <span className="eyebrow">At a glance</span>
                 <h2 className={styles.sectionHeading}>{comparisonTable.title}</h2>
                 <div className={styles.tableWrap}>
-                  <table className={styles.table}>
+                  <table className={`${styles.table}${comparisonTable.headers.length >= 3 ? ` ${styles.tableStackMobile}` : ''}`}>
                     <thead>
                       <tr>
                         {comparisonTable.headers.map((header, i) => (
@@ -114,7 +114,7 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
                       {comparisonTable.rows.map((row, i) => (
                         <tr key={i}>
                           {row.map((cell, j) => (
-                            <td key={j}>{cell}</td>
+                            <td key={j} data-label={comparisonTable.headers[j]}>{cell}</td>
                           ))}
                         </tr>
                       ))}
